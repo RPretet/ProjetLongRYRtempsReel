@@ -1,0 +1,15 @@
+s-tasks := '*-task.s'
+h-tasks := 'tasks.h'
+o-tasks := '*-task.o'
+build-asm asm-file:
+    gcc -O0 -S {{asm-file}}
+
+build :
+    gcc -O0 -c {{s-tasks}}
+    gcc -O0 main.c {{o-tasks}} {{h-tasks}} -o bin.out
+
+run nbLoops type :
+    ./bin.out {{nbLoops}} {{type}}
+
+clean :
+    rm *.o bin.out
