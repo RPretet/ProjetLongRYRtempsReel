@@ -13,8 +13,19 @@
   	name = "SimularyrTempsReel";
   	packages = with pkgs; [
     	gcc
-    	nasm
+    	llvmPackages.clang-tools
+    	just
+
+    	(python313.withPackages (ps: with ps; [
+    	  pip
+    	  pandas
+    	  matplotlib
+    	  jupyterlab
+    	  notebook
+    	]))
+    	vscodium
   	];
+    hardeningDisable = [ "fortify" ];
 
 		};
   };
